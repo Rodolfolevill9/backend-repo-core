@@ -1,5 +1,5 @@
 /**
- * Variables required to access the Trello API
+ * Variables required to access the Trello API.
  */
 export enum Variables {
     // Api Key 
