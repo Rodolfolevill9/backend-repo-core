@@ -2,18 +2,18 @@
  * Variables required to access the Trello API.
  */
 export enum Variables {
-    // Api Key 
-    apiKey = 'fe2b4b44b9ac64d450ed0736500a251d',
-    // Token key
-    token = '3acc2e15b9fa1c80a6efc1747f799d687417a6d36aad4490f3ce918d2b037762',
-    // Url base
-    url = `https://api.trello.com/1/`
-} 
+  // Api Key
+  apiKey = 'fe2b4b44b9ac64d450ed0736500a251d',
+  // Token key
+  token = '3acc2e15b9fa1c80a6efc1747f799d687417a6d36aad4490f3ce918d2b037762',
+  // Url base
+  url = `https://api.trello.com/1/`,
+}
 
 export enum Contexts {
-    cards = 'cards',
-    boards = 'boards',
-    lists = 'lists'
+  cards = 'cards',
+  boards = 'boards',
+  lists = 'lists'
 }
 
 export default class BasePage {
