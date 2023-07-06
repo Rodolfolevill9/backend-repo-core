@@ -17,18 +17,17 @@ export enum Contexts {
 }
 
 export default class BasePage {
-  public getAuthParams() : string {
+  public getAuthParams(): string {
     const authParams = `key=${Variables.apiKey}&token=${Variables.token}`;
     return authParams;
   }
-  public getUrlContext(context: Contexts) : string {
-    const urlBase = `${Variables.url}${context}`
+  public getUrlContext(context: Contexts): string {
+    const urlBase = `${Variables.url}${context}`;
     return urlBase;
   }
   public getRandomName(): string {
-    const randomNumber =Math.floor(Math.random() * 100);
-    const randomName = ("Name Number: " + randomNumber);
+    const randomNumber = Math.floor(Math.random() * 100);
+    const randomName = 'Name Number: ' + randomNumber;
     return randomName;
   }
-
 } 
