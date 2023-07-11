@@ -1,6 +1,11 @@
 pipeline{
     agent any
 
+    parameters {
+        //string(name: 'VERSION_TYPE', defaultValue: none , description: 'type of version to be published')
+        choice(name: 'VERSION_TYPE', choices: ['minor','patch', 'major'], description:'Type of version to be published')
+    }
+
     tools{
         nodejs 'node18'
     }
@@ -19,6 +24,11 @@ pipeline{
         stage('Test'){
             steps{
                 sh 'npm run test'
+            }
+        }
+        stage('Publish'){
+            steps{
+                sh 'npm version ${VERSION_TYPE}'
             }
         }
     }

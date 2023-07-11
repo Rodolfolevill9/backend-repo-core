@@ -11,6 +11,6 @@ describe('Unit testing', () => {
     const resp = await _axios.axiosGet(
       `https://api.trello.com/1/boards/6286b3d99ce1f98edbf83ddb/lists?${authParams}`
     );
-    expect(resp.status).toBe(200);
+    expect(resp.status).toBe(100);
   });
 });
