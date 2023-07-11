@@ -30,4 +30,4 @@ export default class BasePage {
     const randomName = 'Name Number: ' + randomNumber;
     return randomName;
   }
-} 
+}
