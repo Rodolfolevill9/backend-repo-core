@@ -3,7 +3,7 @@ pipeline{
 
     parameters {
         string(name: 'TEST_NAME', defaultValue: none , description: 'Test to run')
-        choice(name: 'VERSION_TYPE', choices: ['minor','patch', 'major'], description:'Type of version to be published')
+        choice(name: 'VERSION_TYPE', choices: ['minooor','patch', 'major'], description:'Type of version to be published')
     }
 
     tools{
