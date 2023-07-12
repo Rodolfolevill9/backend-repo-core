@@ -2,7 +2,7 @@ pipeline{
     agent any
 
     parameters {
-        string(name: 'TEST_NAME', defaultValue: none , description: 'Test to run')
+        string(name: 'TEST_NAME', description: 'Test to run')
         choice(name: 'VERSION_TYPE', choices: ['minooor','patch', 'major'], description:'Type of version to be published')
     }
 
@@ -29,7 +29,7 @@ pipeline{
         stage('Test'){
             steps{
                 script{
-                    if(TEST_NAME == none){
+                    if(parameters.TEST_NAME == none){
                         sh 'npm run test'
                     }else{
                         sh 'npm run test -- -t ${TEST_NAME} --verbose'
