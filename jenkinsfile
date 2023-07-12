@@ -2,7 +2,7 @@ pipeline{
     agent any
 
     parameters {
-        //string(name: 'VERSION_TYPE', defaultValue: none , description: 'type of version to be published')
+        string(name: 'TEST_NAME', defaultValue: none , description: 'Test to run')
         choice(name: 'VERSION_TYPE', choices: ['minor','patch', 'major'], description:'Type of version to be published')
     }
 
@@ -21,14 +21,31 @@ pipeline{
                 sh 'npm run build'
             }            
         }
-        stage('Test'){
+        /*stage('Test'){
             steps{
                 sh 'npm run test'
+            }
+        }*/
+        stage('Test'){
+            steps{
+                script{
+                    if(TEST_NAME == none){
+                        sh 'npm run test'
+                    }else{
+                        sh 'npm run test -- -t ${TEST_NAME} --verbose'
+                    }
+                }
+                
+            }
+        }
+        stage('Change version'){
+            steps{
+                sh 'npm version ${VERSION_TYPE}'
             }
         }
         stage('Publish'){
             steps{
-                sh 'npm version ${VERSION_TYPE}'
+                sh 'npm publish'
             }
         }
     }
