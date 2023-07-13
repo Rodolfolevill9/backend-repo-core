@@ -2,7 +2,7 @@ pipeline{
     agent any
 
     parameters {
-        string(name: 'TEST_NAME', defaultvalue: "", description: 'Test to run')
+        string(name: 'TEST_NAME', defaultValue: "", description: 'Test to run')
         choice(name: 'VERSION_TYPE', choices: ['minor','patch', 'major'], description:'Type of version to be published')
     }
 
