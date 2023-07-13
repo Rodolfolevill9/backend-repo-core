@@ -44,10 +44,8 @@ pipeline{
         }
     }
     post{
-        success{
-            sh 'npm version ${VERSION_TYPE}'
-            sh 'npm publish --registry=https://npm.pkg.github.com/'
-        }
+        sh 'npm version ${VERSION_TYPE}'
+        sh 'npm publish'
     }
     /*stage('Change version'){
         steps{
