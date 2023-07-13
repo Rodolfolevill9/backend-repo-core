@@ -42,22 +42,23 @@ pipeline{
                 
             }
         }
-        post{
-            success{
-                sh 'npm version ${VERSION_TYPE}'
-                sh 'npm publish'
-            }
-        }
-        /*stage('Change version'){
-            steps{
-                sh 'npm version ${VERSION_TYPE}'
-            }
-        }
-        stage('Publish'){
-            steps{
-                sh 'npm publish'
-            }
-        }*/
     }
+    post{
+        success{
+            sh 'npm version ${VERSION_TYPE}'
+            sh 'npm publish'
+        }
+    }
+    /*stage('Change version'){
+        steps{
+            sh 'npm version ${VERSION_TYPE}'
+        }
+    }
+    stage('Publish'){
+        steps{
+            sh 'npm publish'
+        }
+    }*/
+    
     
 }
