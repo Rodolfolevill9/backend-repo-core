@@ -28,8 +28,14 @@ pipeline{
             steps{
                 script{
                     if(TEST_NAME == ""){
+                        echo "***********************"
+                        echo "     Run all Test      "
+                        echo "***********************"
                         sh 'npm run test'
                     }else{
+                        echo "**************************"
+                        echo "Running test ${TEST_NAME} "
+                        echo "**************************"
                         sh 'npm run test -- -t ${TEST_NAME} --verbose'
                     }
                 }
