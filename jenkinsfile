@@ -44,8 +44,10 @@ pipeline{
         }
     }
     post{
-        sh 'npm version ${VERSION_TYPE}'
-        sh 'npm publish'
+        success{
+            sh 'npm version ${VERSION_TYPE}'
+            sh 'npm publish'
+        }
     }
     /*stage('Change version'){
         steps{
