@@ -2,8 +2,8 @@ pipeline{
     agent any
 
     parameters {
-        //string(name: 'TEST_NAME',defaultvalue: "", description: 'Test to run')
-        //choice(name: 'VERSION_TYPE', choices: ['minooor','patch', 'major'], description:'Type of version to be published')
+        string(name: 'TEST_NAME', defaultvalue: "", description: 'Test to run')
+        choice(name: 'VERSION_TYPE', choices: ['minor','patch', 'major'], description:'Type of version to be published')
     }
 
     tools{
@@ -13,6 +13,9 @@ pipeline{
     stages {
         stage('Install'){
             steps{
+                echo "***********************"
+                echo "        Build          "
+                echo "***********************"
                 sh 'npm install'
             }            
         }
@@ -21,20 +24,14 @@ pipeline{
                 sh 'npm run build'
             }            
         }
-        /*stage('Test'){
-            steps{
-                sh 'npm run test'
-            }
-        }*/
         stage('Test'){
             steps{
                 script{
-                    /*if(parametersTEST_NAME == none){
+                    if(TEST_NAME == ""){
                         sh 'npm run test'
                     }else{
                         sh 'npm run test -- -t ${TEST_NAME} --verbose'
-                    }*/
-                    sh 'npm run test'
+                    }
                 }
                 
             }
