@@ -1,11 +1,6 @@
 pipeline{
     agent any
 
-    parameters {
-        string(name: 'TEST_NAME', defaultValue: "", description: 'Test to run')
-        choice(name: 'VERSION_TYPE', choices: ['minor','patch', 'major'], description:'Type of version to be published')
-    }
-
     tools{
         nodejs 'node18'
     }
@@ -24,41 +19,5 @@ pipeline{
                 sh 'npm run build'
             }            
         }
-        stage('Test'){
-            steps{
-                script{
-                    if(TEST_NAME == ""){
-                        echo "***********************"
-                        echo "     Run all Test      "
-                        echo "***********************"
-                        sh 'npm run test'
-                    }else{
-                        echo "**************************"
-                        echo "Running test ${TEST_NAME} "
-                        echo "**************************"
-                        sh 'npm run test -- -t ${TEST_NAME} --verbose'
-                    }
-                }
-                
-            }
-        }
     }
-    post{
-        success{
-            sh 'npm version ${VERSION_TYPE}'
-            sh 'npm publish'
-        }
-    }
-    /*stage('Change version'){
-        steps{
-            sh 'npm version ${VERSION_TYPE}'
-        }
-    }
-    stage('Publish'){
-        steps{
-            sh 'npm publish'
-        }
-    }*/
-    
-    
 }
