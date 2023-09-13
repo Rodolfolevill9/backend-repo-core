@@ -1,7 +1,7 @@
 /**
  * Variables required to access the Trello API.
  */
-export enum Variables {
+enum Variables {
   // Api Key
   apiKey = 'fe2b4b44b9ac64d450ed0736500a251d',
   // Token key
